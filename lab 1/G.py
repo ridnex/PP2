@@ -1,4 +1,4 @@
-
+'''
 a = str(input())
 k=0
 n=0
@@ -13,8 +13,8 @@ def recoursion(a, k, i):
     if(i==0):
         return (int(a[0])*(2**k))
     else:
-        int(a[i])*(2**k) + recoursion(a, k+1, i-1)
+        return int(a[i])*(2**k) + recoursion(a, k+1, i-1)
 
 print(recoursion(a, 0, len(a)-1))
-'''
+
     
