@@ -1,3 +1,5 @@
+#my try 51 test bruh
+'''
 a = [int(i) for i in input().split()]
 i=0;
 d=bool
@@ -23,3 +25,21 @@ if 0 in a:
 else:
     print(1)
 
+'''
+#  by teacher :
+def can_reach_last_index(array):
+    pos = 0
+    max_reachable_pos = 0
+    while pos < len(array):
+        if pos > max_reachable_pos:
+            return False
+        if pos + array[pos] > max_reachable_pos:
+            max_reachable_pos = pos + array[pos]
+        if max_reachable_pos >= len(array) - 1:
+            return True
+        pos += 1
+a = [int(i) for i in input().split()]
+if(can_reach_last_index(a)==True):
+    print(1)
+else:
+    print(0)
