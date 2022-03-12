@@ -1,13 +1,12 @@
 #Write a Python program to convert a given camel case string to snake case.
-
+#it is work only for 2 (asd)(H)(csdc)->asd_hcsdc
 import re
 
-with open("eight.txt", 'r') as f:
+with open("camel.txt", 'r') as f:
     content = f.read()
 
-patern = r'[A-Z]'
-str = ""
-x = re.split(patern, content)
+camel = r'([a-z]+)([A-Z])([a-z]*)'
+
+x = re.finditer(camel, content)
 for i in x:
-    str = str+"_"+i
-print(str)
+    print(i.group(1)+"_"+i.group(2).lower()+i.group(3))
