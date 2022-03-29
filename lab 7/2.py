@@ -2,7 +2,7 @@ import pygame
 
 pygame.init()
 list_music = ["mus1.mp3", "mus2.mp3", "mus3.mp3", "mus4.mp3"]
-pygame.mixer.music.load("mus1.mp3")
+
 
 SONG_END = pygame.USEREVENT + 1
 pygame.mixer.music.set_endevent(SONG_END)
@@ -46,7 +46,7 @@ while running:
                 pygame.mixer.music.load(list_music[0])
                 pygame.mixer.music.play()
             if event.key == pygame.K_z:
-                list_music = [list_music[-1]] + list_music[0:-1] #move current song to the back of the list
+                list_music = [list_music[-1]] + list_music[0:-1] #move last song to the front of the list
                 pygame.mixer.music.load(list_music[0])
                 pygame.mixer.music.play()
 
