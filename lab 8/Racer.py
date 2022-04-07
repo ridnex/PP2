@@ -13,7 +13,7 @@ pygame.mixer.music.play(-1)
  
 #FPS 
 clock = pygame.time.Clock()
-FPS = 10
+FPS = 30
  
 #colors
 BLUE  = (0, 0, 255)
