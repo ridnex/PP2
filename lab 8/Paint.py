@@ -25,8 +25,8 @@ screen.fill(WHITE)
 running = True
 
 #pen
-pen = str("s")
-last_event = "None" 
+pen = None
+last_event = None
 
 
 while running:
@@ -77,7 +77,7 @@ while running:
                 x1, y1 =pygame.mouse.get_pos()
                 last_event = "UP"
             if last_event == "UP":
-                x3 = pygame.draw.rect(screen, COLOR, (int(x), int(y), int(x1)-int(x), int(y1)-int(y) ))
+                pygame.draw.rect(screen, COLOR, (int(x), int(y), int(x1)-int(x), int(y1)-int(y) ))
                 last_event = 'None'
 
         #Draw circle
@@ -89,7 +89,7 @@ while running:
                 x3, y3 =pygame.mouse.get_pos()
                 last_event = "UP"
             if last_event == "UP":
-                x3 = pygame.draw.circle(screen, COLOR, (x2+(x3-x2)/2, y2+(y3-y2)/2), (x3-x2)/2 )
+                pygame.draw.circle(screen, COLOR, (x2+(x3-x2)/2, y2+(y3-y2)/2), (x3-x2)/2 )
                 last_event = 'None'
 
         #Eraser
