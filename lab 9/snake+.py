@@ -139,7 +139,6 @@ while running:
     
     #eating BIF FOOD
     elif body[0][0]==BIG_FOOD_X and body[0][1]== BIG_FOOD_Y:
-        BIG_FOOD_X, BIG_FOOD_Y = rondom_c()
         body.append([0, 0])
         score_value += 30
         time_for_big_food = 10*FPS+1
@@ -181,11 +180,15 @@ while running:
     # Draw food
     pygame.draw.circle(screen, WHITE, (food_x, food_y), radius-5)
 
+    if time_for_big_food == 0:
+        BIG_FOOD_X, BIG_FOOD_Y = rondom_c()
+
     if time_for_big_food <= 10*FPS:
         pygame.draw.circle(screen, YELLOW, (BIG_FOOD_X, BIG_FOOD_Y), radius)
         time_for_big_food += 1
 
-
+    if time_for_big_food > 10*FPS:
+        BIG_FOOD_X, BIG_FOOD_Y = -100, -100
 
     # Draw snake body
     for i, (x, y) in enumerate(body):
