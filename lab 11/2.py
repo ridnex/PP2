@@ -1,0 +1,39 @@
+import psycopg2
+
+conn = psycopg2.connect(
+	database="phone",
+	user='phone_user',
+	password='Esko28:)',
+	host='localhost',
+	port='5432'
+)
+
+''' my SQL in DATAGRIP:
+create or replace procedure addPhone(first_name varchar, last_name varchar, phone_number numeric)
+as
+$$
+begin
+    update phonebook
+    set phone_num = $3
+    where (phonebook.first_name = $1) and (phonebook.last_name = $2);
+    IF NOT FOUND THEN
+        insert into phonebook(first_name,last_name,phone_num) values ($1, $2, $3);
+    END IF;
+end;
+$$
+    LANGUAGE plpgsql;'''
+
+cursor = conn.cursor()
+conn.autocommit = True
+first_name = str(input("First_name: "))
+last_name = str(input("Last_name: "))
+num= int(input("Num: "))
+
+
+cursor.execute('CALL addPhone(%s,%s,%s)', (first_name, last_name, num))
+
+
+
+cursor.callproc('getStudentNameSurnamePhone', [first_name])
+result = cursor.fetchall()
+print(result)
