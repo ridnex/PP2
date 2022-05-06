@@ -9,15 +9,16 @@ conn = psycopg2.connect(
 )
 ''' my SQL in DATAGRIP:
 create or replace function getStudentNameSurnamePhone(name varchar)
-    returns setof phonebook
+    returns setof phonebook_lab11
 as
 $$
 begin
     return query
-        select *  from phonebook
-        where (phonebook.first_name = $1) or (phonebook.last_name = $1);
+        select *  from phonebook_lab11
+        where (phonebook_lab11.first_name = $1) or (phonebook_lab11.last_name = $1);
 end
-$$ language plpgsql;'''
+$$ language plpgsql;
+'''
 
 
 cursor = conn.cursor()

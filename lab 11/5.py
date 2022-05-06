@@ -1,4 +1,3 @@
-from ast import Num
 import psycopg2
 
 conn = psycopg2.connect(
@@ -10,24 +9,28 @@ conn = psycopg2.connect(
 )
 
 ''' my SQL in DATAGRIP:
-1) BY NAME
+BY NAME:
 create or replace procedure deleteName(first_name varchar, last_name varchar)
 as
 $$
 begin
     delete
-    from phonebook as p
+    from phonebook_lab11 as p
     where (p.first_name = $1) and(p.last_name = $2);
 end;
 $$
     LANGUAGE plpgsql;
-2)BY NUM
-create or replace procedure deleteNum(num integer)
+
+
+
+---------------------------------5(2)-------------------
+BY NUM:
+create or replace procedure deleteNum(num varchar)
 as
 $$
 begin
     delete
-    from phonebook as p
+    from phonebook_lab11 as p
     where (p.phone_num = $1) ;
 end;
 $$
@@ -49,8 +52,8 @@ print(result)
 
 
 
-num=int(input("Num: "))
-cursor.execute(f'CALL deleteNum({num})')
+num=str(input("Num: "))
+cursor.execute(f'CALL deleteNum(\'{num}\')')
 
 sql = f"select * from phonebook";
 cursor.execute(sql)

@@ -9,13 +9,13 @@ conn = psycopg2.connect(
 )
 
 ''' my SQL in DATAGRIP:
-create or replace procedure addPhone(first_name varchar, last_name varchar, phone_number numeric)
+create or replace procedure addPhone(first_name varchar, last_name varchar, phone_number varchar)
 as
 $$
 begin
-    update phonebook
+    update phonebook_lab11
     set phone_num = $3
-    where (phonebook.first_name = $1) and (phonebook.last_name = $2);
+    where (phonebook_lab11.first_name = $1) and (phonebook_lab11.last_name = $2);
     IF NOT FOUND THEN
         insert into phonebook(first_name,last_name,phone_num) values ($1, $2, $3);
     END IF;
@@ -27,7 +27,7 @@ cursor = conn.cursor()
 conn.autocommit = True
 first_name = str(input("First_name: "))
 last_name = str(input("Last_name: "))
-num= int(input("Num: "))
+num= str(input("Num: "))
 
 
 cursor.execute('CALL addPhone(%s,%s,%s)', (first_name, last_name, num))
